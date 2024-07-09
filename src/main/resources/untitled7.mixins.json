@@ -7,13 +7,17 @@
   "mixins": [
     "SlotMixin",
     "AbstractContainerMenuMixin",
-    "MixinLocalPlayer"
+    "MixinLocalPlayer",
+    "MixinBlocks",
+    "ProjectileMixin"
 
   ],
   "client": [
     "SlotMixin",
     "AbstractContainerMenuMixin",
-    "MixinLocalPlayer"
+    "MixinLocalPlayer",
+    "MixinBlocks",
+    "ProjectileMixin"
 
   ],
   "injectors": {

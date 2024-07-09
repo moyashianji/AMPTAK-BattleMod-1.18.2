@@ -1,0 +1,7 @@
+{
+  "parent": "untitled7:custom/oriaxe",
+  "textures": {
+    "0": "untitled7:items/texture",
+    "particle": "untitled7:items/texture"
+  }
+}

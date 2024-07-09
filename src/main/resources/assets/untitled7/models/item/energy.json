@@ -1,0 +1,8 @@
+{
+  "parent": "untitled7:custom/energy",
+  "textures": {
+    "0": "untitled7:items/energyy",
+    "particle": "untitled7:items/energyy"
+
+  }
+}
