@@ -9,7 +9,8 @@
     "AbstractContainerMenuMixin",
     "MixinLocalPlayer",
     "MixinBlocks",
-    "ProjectileMixin"
+    "ProjectileMixin",
+    "MixinWorldBorder"
 
   ],
   "client": [
@@ -17,7 +18,8 @@
     "AbstractContainerMenuMixin",
     "MixinLocalPlayer",
     "MixinBlocks",
-    "ProjectileMixin"
+    "ProjectileMixin",
+    "MixinWorldBorder"
 
   ],
   "injectors": {

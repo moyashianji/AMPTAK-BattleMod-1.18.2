@@ -34,6 +34,12 @@ public class AbstractContainerMenuMixin {
                     ci.cancel();
                 }
 
+                if(slotIndex == 0 ){
+
+                    if (clickType == ClickType.THROW || clickType == ClickType.PICKUP || clickType == ClickType.PICKUP_ALL || clickType == ClickType.SWAP) {
+                        ci.cancel();
+                    }
+                }
                 // それ以外のスロットはロックする
                 // それ以外のロックされたスロット
                 if (slotIndex > 8 && slotIndex < 36) {

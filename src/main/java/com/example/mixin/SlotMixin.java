@@ -1,5 +1,6 @@
 package com.example.mixin;
 
+import com.example.init.IjijModItems;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
@@ -27,6 +28,11 @@ public class SlotMixin {
             }
             slot.set(new ItemStack(Items.BARRIER));
 
+            if(slotIndex == 0){
+                return;
+            }
+            slot.set(new ItemStack(IjijModItems.AXE.get()));
+
             // それ以外のスロットはロックする
             cir.setReturnValue(false);
 
@@ -41,7 +47,7 @@ public class SlotMixin {
             int slotIndex = slot.getSlotIndex();
 
             // メインハンド、オフハンド、装備スロット、メインスロットを除く
-            if (slotIndex >= 36 || slotIndex < 8) {
+            if (slotIndex >= 36 || slotIndex < 8 || slotIndex == 0) {
                 return;
             }
 

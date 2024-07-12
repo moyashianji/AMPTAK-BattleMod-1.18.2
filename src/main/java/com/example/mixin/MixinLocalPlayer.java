@@ -1,5 +1,6 @@
 package com.example.mixin;
 
+import com.example.init.IjijModItems;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.client.player.LocalPlayer;
@@ -35,7 +36,7 @@ public abstract class MixinLocalPlayer extends Player {
         int selectedSlotIndex = this.getInventory().selected;
         ItemStack selectedStack = this.getInventory().getItem(selectedSlotIndex);
 
-        if (selectedStack.getItem() == Items.BARRIER) {
+        if (selectedStack.getItem() == Items.BARRIER || selectedStack.getItem() == IjijModItems.AXE.get()) {
             return false; // Cancel dropping barrier items
         }
 

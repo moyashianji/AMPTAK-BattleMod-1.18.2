@@ -30,6 +30,7 @@ public class EnergyItem extends Item {
 
 		entity.getAttribute(Attributes.MAX_HEALTH).setBaseValue(entity.getMaxHealth()+6);
 		entity.heal(entity.getMaxHealth());
+
 		return retval;
 	}
 

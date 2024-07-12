@@ -1,5 +1,6 @@
 package com.example.proc;
 
+import com.example.init.IjijModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -78,7 +79,7 @@ public class IProcedure {
                 for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                     ItemStack stack = player.getInventory().getItem(i);
                     if (!stack.isEmpty()) {
-                        if (!stack.is(Items.BARRIER)) {
+                        if (!stack.is(Items.BARRIER)&& !stack.is(IjijModItems.AXE.get())) {
                             chest.setItem(i, stack.copy());
                             player.getInventory().setItem(i, ItemStack.EMPTY);
                         }
@@ -88,7 +89,7 @@ public class IProcedure {
                 // プレイヤーの装備品をチェストに移動
                 for (ItemStack stack : player.getArmorSlots()) {
                     if (!stack.isEmpty()) {
-                        if (!stack.is(Items.BARRIER)) {
+                        if (!stack.is(Items.BARRIER)&& !stack.is(IjijModItems.AXE.get())) {
 
                             chest.setItem(chest.getContainerSize() - 1, stack.copy());
                         }
@@ -96,7 +97,7 @@ public class IProcedure {
                 }
                 for (ItemStack stack : player.getHandSlots()) {
                     if (!stack.isEmpty()) {
-                        if (!stack.is(Items.BARRIER)) {
+                        if (!stack.is(Items.BARRIER)  && !stack.is(IjijModItems.AXE.get())) {
 
                             chest.setItem(chest.getContainerSize() - 1, stack.copy());
                         }
@@ -108,7 +109,7 @@ public class IProcedure {
             for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                 ItemStack stack = player.getInventory().getItem(i);
                 if (!stack.isEmpty()) {
-                    if (!stack.is(Items.BARRIER)) {
+                    if (!stack.is(Items.BARRIER) && !stack.is(IjijModItems.AXE.get())) {
 
                         ItemEntity itemEntity = new ItemEntity(player.level, deathPos.getX(), deathPos.getY(), deathPos.getZ(), stack);
                         player.level.addFreshEntity(itemEntity);
@@ -131,6 +132,8 @@ public class IProcedure {
     private static void handleBarrierItems(Player player, LivingDropsEvent event) {
         // Iterate through drops and remove barrier items
         event.getDrops().removeIf(drop -> drop.getItem().getItem() == Items.BARRIER);
+        event.getDrops().removeIf(drop -> drop.getItem().getItem() == IjijModItems.AXE.get());
+
     }
     @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
@@ -150,8 +153,12 @@ public class IProcedure {
             }
             if (player.getInventory().getItem(i).isEmpty()) {
                 player.getInventory().setItem(i, new ItemStack(Items.BARRIER));
+
             }
+            player.getInventory().setItem(0, new ItemStack(IjijModItems.AXE.get()));
+
         }
+
     }
 
     @SubscribeEvent
