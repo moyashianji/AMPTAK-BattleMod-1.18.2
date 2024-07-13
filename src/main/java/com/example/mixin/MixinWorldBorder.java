@@ -11,20 +11,5 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(WorldBorder.class)
 public class MixinWorldBorder {
 
-    @Inject(method = "isWithinBounds", at = @At("HEAD"), cancellable = true)
-    private void isWithinBounds(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-        WorldBorder worldBorder = (WorldBorder) (Object) this;
-        double centerX = worldBorder.getCenterX();
-        double centerZ = worldBorder.getCenterZ();
-        double radius = worldBorder.getSize() / 2.0;
 
-        double dx = pos.getX() - centerX;
-        double dz = pos.getZ() - centerZ;
-
-        if (dx * dx + dz * dz < radius * radius) {
-            cir.setReturnValue(true);
-        } else {
-            cir.setReturnValue(false);
-        }
-    }
 }

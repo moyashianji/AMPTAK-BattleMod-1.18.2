@@ -1,5 +1,6 @@
 package com.example.proc;
 
+import com.example.config.HealthconfigConfiguration;
 import com.example.examplemod.ExampleMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSource;
@@ -35,8 +36,10 @@ import net.minecraftforge.fml.common.Mod;
 
 public class Command {
 
-    public static int timer = 600;
+    public static int timer = HealthconfigConfiguration.GAMETIME.get();
+    private static boolean isTicking = false;
 
+    public static boolean GAMEFLAG = false;
     @SubscribeEvent
     public static void registerCommand(RegisterCommandsEvent event) {
         event.getDispatcher().register(Commands.literal("gamestart")
@@ -54,43 +57,16 @@ public class Command {
 
                     Direction direction = entity.getDirection();
 
-                    WorldBorder worldBorder = world.getWorldBorder();
-                    worldBorder.setCenter(x,y);
-                    worldBorder.setSize(1000);
+                    if(GAMEFLAG == false) {
+                        WorldBorder worldBorder = world.getWorldBorder();
+                        worldBorder.setCenter(x, y);
+                        worldBorder.setSize(HealthconfigConfiguration.RADIUS.get());
 
-                    worldBorder.lerpSizeBetween(worldBorder.getSize(), 3, 600000L);
+                        worldBorder.lerpSizeBetween(worldBorder.getSize(), 10, HealthconfigConfiguration.GAMETIME.get() * 1000L);
+                        timer = HealthconfigConfiguration.GAMETIME.get();
+                        GAMEFLAG = true;
 
-                    new Object() {
-                        private int ticks = 0;
-                        private float waitTicks;
-                        private LevelAccessor world;
-
-                        public void start(LevelAccessor world, int waitTicks) {
-                            this.waitTicks = waitTicks;
-                            MinecraftForge.EVENT_BUS.register(this);
-                            this.world = world;
-                        }
-
-                        @SubscribeEvent
-                        public void tick(TickEvent.ServerTickEvent event) {
-                            if (event.phase == TickEvent.Phase.END) {
-                                this.ticks += 1;
-
-                                if(this.ticks % 20 ==0) {
-                                    timer--;
-                                }
-
-                                if (this.ticks >= this.waitTicks)
-                                    run();
-                            }
-                        }
-
-                        private void run() {
-
-                            MinecraftForge.EVENT_BUS.unregister(this);
-
-                        }
-                    }.start(world, 600);
+                    }
                     return 0;
                 }));
         event.getDispatcher().register(Commands.literal("join")
@@ -133,49 +109,77 @@ public class Command {
                     if (entity == null)
                         entity = FakePlayerFactory.getMinecraft(worldd);
 
-                    Direction direction = entity.getDirection();
+                    if(GAMEFLAG == true) {
+                        Direction direction = entity.getDirection();
+
+                        MinecraftServer server = worldd.getServer();
+
+                        Scoreboard scoreboard = server.getScoreboard();
+
+                        Objective objective = scoreboard.getObjective("TeamCount");
+
+                        server.getScoreboard().removeObjective(objective);
 
 
-                    Entity _entityTeam = entity;
+                        GAMEFLAG = false;
+
+                        Entity _entityTeam = entity;
                         PlayerTeam _pt = worldd.getScoreboard().getPlayerTeam("gameplayer");
                         if (_pt != null)
                             worldd.getScoreboard().removePlayerTeam(_pt);
-                    new Object() {
-                        private int ticks = 0;
-                        private float waitTicks;
-                        private LevelAccessor world;
+                        new Object() {
+                            private int ticks = 0;
+                            private float waitTicks;
+                            private LevelAccessor world;
 
-                        public void start(LevelAccessor world, int waitTicks) {
-                            this.waitTicks = waitTicks;
-                            MinecraftForge.EVENT_BUS.register(this);
-                            this.world = world;
-                        }
+                            public void start(LevelAccessor world, int waitTicks) {
+                                this.waitTicks = waitTicks;
+                                MinecraftForge.EVENT_BUS.register(this);
+                                this.world = world;
+                            }
 
-                        @SubscribeEvent
-                        public void tick(TickEvent.ServerTickEvent event) {
-                            if (event.phase == TickEvent.Phase.END) {
-                                if(this.ticks % 20 == 0) {
-                                    timer --;
-                                }
+                            @SubscribeEvent
+                            public void tick(TickEvent.ServerTickEvent event) {
+                                if (event.phase == TickEvent.Phase.END) {
+
                                     this.ticks += 1;
 
-                                if (this.ticks >= this.waitTicks)
-                                    run();
+                                    if (this.ticks >= this.waitTicks)
+                                        run();
+                                }
                             }
-                        }
 
-                        private void run() {
+                            private void run() {
+                                Scoreboard scoreboard = server.getScoreboard();
+                                Objective objective = scoreboard.getObjective("TeamCount");
 
-                            MinecraftForge.EVENT_BUS.unregister(this);
+                                //scoreboard.removeObjective(objective);
 
-                        }
-                    }.start(worldd, 12000);
+                                if (objective == null) {
+                                    objective = scoreboard.addObjective("TeamCount", ObjectiveCriteria.DUMMY, Component.nullToEmpty(""), ObjectiveCriteria.RenderType.INTEGER);
+                                }
 
+                                scoreboard.setDisplayObjective(1, objective); // 1 is the display slot for sidebar
 
+                                Score playerCountScoree = scoreboard.getOrCreatePlayerScore("残り時間（秒）:", objective);
 
-                    return 0;
+                                playerCountScoree.setScore(HealthconfigConfiguration.GAMETIME.get());
+
+                                worldd.getScoreboard().addPlayerTeam("gameplayer");
+
+                                MinecraftForge.EVENT_BUS.unregister(this);
+
+                            }
+                        }.start(worldd, 20);
+                    }
+
+                        return 0;
+
                 }));
+
     }
+    private static int tickss = 0;
+
 
     @SubscribeEvent
     public static void onServerStarting(ServerStartingEvent event) {
@@ -192,11 +196,14 @@ public class Command {
         scoreboard.setDisplayObjective(1, objective); // 1 is the display slot for sidebar
     }
 
+
     @SubscribeEvent
     public static void onServerTick(TickEvent.WorldTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
 
             if(!event.world.isClientSide) {
+
+
                 MinecraftServer server = event.world.getServer();
 
                 Scoreboard scoreboard = server.getScoreboard();
@@ -217,7 +224,26 @@ public class Command {
                     Score playerCountScoree = scoreboard.getOrCreatePlayerScore("残り時間（秒）:", objective);
 
                     playerCountScore.setScore(playerCount);
-                    playerCountScoree.setScore(timer);
+
+                    if (GAMEFLAG == true) {
+                        if(tickss%60 == 0) {
+                            timer--;
+                            playerCountScoree.setScore(timer);
+
+                            if (timer == 0) {
+                                GAMEFLAG = false;
+                                timer = HealthconfigConfiguration.GAMETIME.get();
+
+                            }
+                        }
+
+
+                    }
+                    if(!event.world.isClientSide) {
+
+                        tickss++;
+                    }
+
                 }
             }
         }

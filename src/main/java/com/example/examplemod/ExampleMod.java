@@ -1,5 +1,6 @@
 package com.example.examplemod;
 
+import com.example.init.ConfigInit;
 import com.example.init.IjijModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.level.block.Block;
@@ -35,6 +36,7 @@ public class ExampleMod
         // Register the processIMC method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
