@@ -10,7 +10,7 @@ public class OriAxe extends AxeItem {
     public OriAxe() {
         super(new Tier() {
             public int getUses() {
-                return 100;
+                return 10000;
             }
 
             public float getSpeed() {

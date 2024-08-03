@@ -23,7 +23,11 @@ public class SlotMixin {
             int slotIndex = slot.getSlotIndex();
 
             // メインハンド、オフハンド、装備スロット、メインスロットを除く
-            if (slotIndex >= 36 || slotIndex < 8) {
+            if (slotIndex >= 36 || slotIndex < 9) {
+                return;
+            }
+
+            if(slotIndex >=27 && slotIndex <= 30){
                 return;
             }
             slot.set(new ItemStack(Items.BARRIER));
@@ -47,10 +51,12 @@ public class SlotMixin {
             int slotIndex = slot.getSlotIndex();
 
             // メインハンド、オフハンド、装備スロット、メインスロットを除く
-            if (slotIndex >= 36 || slotIndex < 8 || slotIndex == 0) {
+            if (slotIndex >= 36 || (slotIndex < 9 && slotIndex >= 2)) {
                 return;
             }
-
+            if(slotIndex >=27 && slotIndex <= 30){
+                return;
+            }
             // それ以外のスロットはロックする
             cir.setReturnValue(false);
         }

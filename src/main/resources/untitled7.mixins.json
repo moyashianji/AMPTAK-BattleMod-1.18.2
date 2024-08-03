@@ -10,16 +10,7 @@
     "MixinLocalPlayer",
     "MixinBlocks",
     "ProjectileMixin",
-    "MixinWorldBorder"
-
-  ],
-  "client": [
-    "SlotMixin",
-    "AbstractContainerMenuMixin",
-    "MixinLocalPlayer",
-    "MixinBlocks",
-    "ProjectileMixin",
-    "MixinWorldBorder"
+    "TitleScreenMixin"
 
   ],
   "injectors": {

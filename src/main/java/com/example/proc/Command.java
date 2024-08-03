@@ -32,10 +32,9 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber
 
 public class Command {
-
+/**
     public static int timer = HealthconfigConfiguration.GAMETIME.get();
     private static boolean isTicking = false;
 
@@ -51,11 +50,6 @@ public class Command {
                     double y = arguments.getSource().getPosition().y();
                     double z = arguments.getSource().getPosition().z();
 
-                    Entity entity = arguments.getSource().getEntity();
-                    if (entity == null)
-                        entity = FakePlayerFactory.getMinecraft(world);
-
-                    Direction direction = entity.getDirection();
 
                     if(GAMEFLAG == false) {
                         WorldBorder worldBorder = world.getWorldBorder();
@@ -74,16 +68,7 @@ public class Command {
                 .executes(arguments -> {
                     ServerLevel world = arguments.getSource().getLevel();
 
-                    double x = arguments.getSource().getPosition().x();
-                    double y = arguments.getSource().getPosition().y();
-                    double z = arguments.getSource().getPosition().z();
-
                     Entity entity = arguments.getSource().getEntity();
-                    if (entity == null)
-                        entity = FakePlayerFactory.getMinecraft(world);
-
-                    Direction direction = entity.getDirection();
-
 
                     Entity _entityTeam = entity;
                     PlayerTeam _pt = _entityTeam.level.getScoreboard().getPlayerTeam("gameplayer");
@@ -101,13 +86,7 @@ public class Command {
                 .executes(arguments -> {
                     ServerLevel worldd = arguments.getSource().getLevel();
 
-                    double x = arguments.getSource().getPosition().x();
-                    double y = arguments.getSource().getPosition().y();
-                    double z = arguments.getSource().getPosition().z();
-
                     Entity entity = arguments.getSource().getEntity();
-                    if (entity == null)
-                        entity = FakePlayerFactory.getMinecraft(worldd);
 
                     if(GAMEFLAG == true) {
                         Direction direction = entity.getDirection();
@@ -265,4 +244,5 @@ public class Command {
             }
         }
     }
+**/
 }

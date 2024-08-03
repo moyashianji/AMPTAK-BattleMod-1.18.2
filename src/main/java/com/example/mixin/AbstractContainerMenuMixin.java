@@ -25,10 +25,12 @@ public class AbstractContainerMenuMixin {
                 int slotIndex = slot.getSlotIndex();
 
                 // メインハンド、オフハンド、装備スロット、メインスロットを除く
-                if (slotIndex >= 36 || slotIndex < 9) {
+                if (slotIndex >= 36 || slotIndex <= 9) {
                     return;
                 }
-
+                if(slotIndex >=27 && slotIndex <= 30){
+                    return;
+                }
                 // メインスロットの一番右のスロットを保護
                 if (slotIndex == 8) {
                     ci.cancel();

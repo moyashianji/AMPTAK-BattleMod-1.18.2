@@ -5,6 +5,8 @@ package com.example.item;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.food.FoodProperties;
@@ -16,6 +18,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Random;
 
@@ -28,10 +31,18 @@ public class EnergyItem extends Item {
 	public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
 		ItemStack retval = super.finishUsingItem(itemstack, world, entity);
 
-		entity.getAttribute(Attributes.MAX_HEALTH).setBaseValue(entity.getMaxHealth()+6);
-		entity.heal(entity.getMaxHealth());
+
+		entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1));
 
 		return retval;
+	}
+
+	@Override
+	public InteractionResult useOn(UseOnContext context) {
+		super.useOn(context);
+		BlockState _bs = (context.getLevel().getBlockState(new BlockPos(context.getClickedPos())));
+		System.out.println(_bs.getProperties());
+		return InteractionResult.SUCCESS;
 	}
 
 }

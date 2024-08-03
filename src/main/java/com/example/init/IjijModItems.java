@@ -4,9 +4,7 @@
  */
 package com.example.init;
 
-import com.example.item.EnergyItem;
-import com.example.item.OriAxe;
-import com.example.item.SsItem;
+import com.example.item.*;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -17,5 +15,7 @@ public class IjijModItems {
 	public static final RegistryObject<Item> SS = REGISTRY.register("ss", () -> new SsItem());
 	public static final RegistryObject<Item> ENERGY = REGISTRY.register("energy", () -> new EnergyItem());
 	public static final RegistryObject<Item> AXE = REGISTRY.register("oriaxe", () -> new OriAxe());
+	public static final RegistryObject<Item> PINE = REGISTRY.register("pine", () -> new Pinapple());
+	public static final RegistryObject<Item> GARLIC = REGISTRY.register("garlic", () -> new Garlic());
 
 }

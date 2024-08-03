@@ -13,7 +13,7 @@ public class ConfigInit {
     @SubscribeEvent
     public static void register(FMLConstructModEvent event) {
         event.enqueueWork(() -> {
-            ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, HealthconfigConfiguration.SPEC, "gungame.toml");
+            ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, HealthconfigConfiguration.SPEC, "gungame.toml");
         });
     }
 }
