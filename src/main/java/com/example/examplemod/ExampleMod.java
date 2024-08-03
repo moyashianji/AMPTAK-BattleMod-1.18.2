@@ -81,6 +81,7 @@ public class ExampleMod
     private  final int INITIAL_BORDER_SIZE = 1000;
     private  final int FINAL_BORDER_SIZE = 2;
     private int remainingTime = COUNTDOWN_TIME;
+    public static int ConfigTIME = 0;
     public ExampleMod()
     {
         // Register the setup method for modloading
@@ -140,6 +141,7 @@ public class ExampleMod
                 }))
                 .then(Commands.literal("reset").executes(context -> {
                     resetGame(context.getSource().getServer());
+                    loadConfig(context.getSource().getServer());
                     return 1;
                 }))
                 .then(Commands.literal("reload").executes(context -> {
@@ -160,11 +162,14 @@ public class ExampleMod
         }
 
         try (BufferedReader reader = new BufferedReader(new FileReader(configFile))) {
-            time = Integer.parseInt(reader.readLine().split(":")[1].trim());
+            remainingTime = Integer.parseInt(reader.readLine().split(":")[1].trim());
             radius = Integer.parseInt(reader.readLine().split(":")[1].trim());
             xx = Integer.parseInt(reader.readLine().split(":")[1].trim());
             yy = Integer.parseInt(reader.readLine().split(":")[1].trim());
             zz = Integer.parseInt(reader.readLine().split(":")[1].trim());
+            ConfigTIME = remainingTime;
+            time = remainingTime;
+            System.out.println(remainingTime);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -236,7 +241,7 @@ public class ExampleMod
 
     private void startGame(MinecraftServer server) {
         gameRunning = true;
-        remainingTime = COUNTDOWN_TIME;
+        //remainingTime = COUNTDOWN_TIME;
 
         WorldBorder worldBorder = server.overworld().getWorldBorder();
         worldBorder.setCenter(xx, zz);
@@ -260,7 +265,7 @@ public class ExampleMod
 
     private void resetGame(MinecraftServer server) {
         gameRunning = false;
-        remainingTime = COUNTDOWN_TIME;
+        //remainingTime = COUNTDOWN_TIME;
 
         for (ServerPlayer player : playersInGame) {
             player.teleportTo(server.overworld(), xx, yy, zz, player.getYRot(), player.getXRot());
@@ -327,12 +332,14 @@ public class ExampleMod
 
         }
         resetGame(server);
+        loadConfig(server);
+
     }
 
     private void resetPlayerScores(Scoreboard scoreboard) {
         scoreboard.resetPlayerScore("――残り時間――", sidebarObjective);
         scoreboard.resetPlayerScore("――残り人数――", sidebarObjective);
-        for (int i = 0; i <= COUNTDOWN_TIME; i++) {
+        for (int i = 0; i <= ConfigTIME; i++) {
             scoreboard.resetPlayerScore("残り: " + i + "秒", sidebarObjective);
         }
         for (int i = 0; i <= 6; i++) {

@@ -28,7 +28,7 @@ public class TimeSyncPacket {
     public static void handle(TimeSyncPacket packet, Supplier<NetworkEvent.Context> context) {
         context.get().enqueueWork(() -> {
             ExampleMod.CLIENT_TIME = packet.remainingTime;
-            ExampleMod.updateClientSidebar();
+           // ExampleMod.updateClientSidebar();
             System.out.println("Received remainingTime: " + packet.remainingTime); // ログ出力
         });
         context.get().setPacketHandled(true);
