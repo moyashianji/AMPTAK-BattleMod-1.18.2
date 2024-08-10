@@ -5,13 +5,13 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "untitled7.refmap.json",
   "mixins": [
-    "SlotMixin",
     "AbstractContainerMenuMixin",
-    "MixinLocalPlayer",
+    "FoodDataMixin",
     "MixinBlocks",
+    "MixinLocalPlayer",
     "ProjectileMixin",
+    "SlotMixin",
     "TitleScreenMixin"
-
   ],
   "injectors": {
     "defaultRequire": 1

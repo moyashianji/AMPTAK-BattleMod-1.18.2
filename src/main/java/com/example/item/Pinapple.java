@@ -28,7 +28,7 @@ public class Pinapple extends Item {
 
 
 
-		entity.heal(4.0f);
+		entity.heal(14.0f);
 		return retval;
 	}
 

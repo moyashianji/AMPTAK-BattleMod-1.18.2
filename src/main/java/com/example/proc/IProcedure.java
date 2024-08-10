@@ -193,6 +193,8 @@ public class IProcedure {
     public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
         Player player = (Player) event.getEntity();
         protectInventory(player);
+        event.getPlayer().getAttribute(Attributes.MAX_HEALTH).setBaseValue(40);
+        event.getPlayer().heal((float) event.getPlayer().getAttribute(Attributes.MAX_HEALTH).getValue());
     }
 
     private static void protectInventory(Player player) {
