@@ -2,22 +2,16 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "rolls": {
-        "min": 3,
-        "max": 3
-      },
+      "rolls": 1,
       "entries": [
         {
           "type": "minecraft:item",
           "name": "minecraft:bread",
-          "weight": 1,
+          "weight": 2,
           "functions": [
             {
               "function": "set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
+              "count": 1
             }
           ]
         },
@@ -28,10 +22,7 @@
           "functions": [
             {
               "function": "set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
+              "count": 1
             }
           ]
         },
@@ -42,122 +33,29 @@
           "functions": [
             {
               "function": "set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
+              "count": 1
             }
           ]
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:iron_helmet",
-          "weight": 1,
+          "name": "minecraft:potato",
+          "weight": 3,
           "functions": [
             {
               "function": "set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
+              "count": 1
             }
           ]
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:iron_chestplate",
+          "name": "minecraft:rabbit_stew",
           "weight": 1,
           "functions": [
             {
               "function": "set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:iron_leggings",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:iron_boots",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:diamond_helmet",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:diamond_chestplate",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:diamond_leggings",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:diamond_boots",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
+              "count": 1
             }
           ]
         },
@@ -168,10 +66,1034 @@
           "functions": [
             {
               "function": "set_count",
-              "count": {
-                "min": 1,
-                "max": 1
-              }
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "untitled7:garlic",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "untitled7:pine",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_helmet",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_chestplate",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_leggings",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_boots",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_helmet",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_chestplate",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_leggings",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_boots",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_helmet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_chestplate",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_leggings",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_boots",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:coyote_sight",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:aimpoint_t2",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:aimpoint_t1",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:eotech_n",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:vortex_uh_1",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:eotech_short",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:srs_red_dot",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:acog_4x_scope",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:qmk152",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:elcan_14x",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:lpvo_1_6",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:8x_scope",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tac:m1911",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:ak47",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:m60",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:glock_17",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:dp28",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:sti2011",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:m92fs",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:vector45",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:micro_uzi",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:m4",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:db_short",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:m24",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:qbz_95",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:aa_12",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:m870_classic",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:m1a1_smg",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:mk14",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:deagle_357",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:hk_mp5a5",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:glock_18",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:cz75",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:cz75_auto",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:hk416_a5",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:type81_x",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:mp7",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:m82a2",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:ai_awp",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:rpg7",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:rpk",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:fn_fal",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:sig_mcx_spear",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:mp9",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:sks_tactical",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:m1014",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:m249",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:mk23",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:qbz_191",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:m16a4",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:scar_h",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:scar_l",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:mk47",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:spr15",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:tti_g34",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:mk18_mod1",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:udp_9",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:scar_mk20",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:hk_g3",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:timeless_50",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:colt_python",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:p90",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:tec_9",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:uzi",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:mrad",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tac:b_magnum",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:round45",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:46x30",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:ae50",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:win_30-30",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:bullet_308",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:nato_556_bullet",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:9mm_round",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:10_gauge_round",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:58x42",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:762x25",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:762x54",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:762x39",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:50bmg",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:lapua338",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:bullet68",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:57x28",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 30
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:small_extended_mag",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:medium_extended_mag",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tac:large_extended_mag",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
             }
           ]
         }
