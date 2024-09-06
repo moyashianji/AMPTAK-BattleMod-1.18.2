@@ -10,9 +10,9 @@
     "MixinBlocks",
     "MixinLocalPlayer",
     "ProjectileMixin",
-    "ReloadHandlerMixin",
     "SlotMixin",
-    "TitleScreenMixin"
+    "TitleScreenMixin",
+    "BlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1

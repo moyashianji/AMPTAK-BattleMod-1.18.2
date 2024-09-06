@@ -29,6 +29,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.scores.PlayerTeam;
+import net.minecraft.world.scores.Scoreboard;
+import net.minecraft.world.scores.Team;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -48,7 +51,7 @@ import java.util.List;
 public class IProcedure {
     @SubscribeEvent
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-        event.getPlayer().getAttribute(Attributes.MAX_HEALTH).setBaseValue(40);
+        event.getPlayer().getAttribute(Attributes.MAX_HEALTH).setBaseValue(60);
     }
 
 
@@ -114,20 +117,31 @@ public class IProcedure {
             // チェストを生成
             player.level.setBlock(chestPos, chestState, 3);
             chestlist.add(deathPos);
+
             // チェストのBlockEntityを取得
             BlockEntity blockEntity = player.level.getBlockEntity(chestPos);
             ItemStack item = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("paraglider", "paraglider")));
 
             if (blockEntity instanceof ChestBlockEntity) {
                 ChestBlockEntity chest = (ChestBlockEntity) blockEntity;
+                int chestSize = chest.getContainerSize();
+                int currentIndex = 0;
 
                 // プレイヤーのインベントリをチェストに移動
                 for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                     ItemStack stack = player.getInventory().getItem(i);
                     if (!stack.isEmpty()) {
-                        if (!stack.is(Items.BARRIER)&& !stack.is(IjijModItems.AXE.get()) &&!stack.is(item.getItem())) {
-                            chest.setItem(i, stack.copy());
-                            player.getInventory().setItem(i, ItemStack.EMPTY);
+                        if (!stack.is(Items.BARRIER) && !stack.is(IjijModItems.AXE.get()) && !stack.is(item.getItem())) {
+                            // 空きスロットがあるか確認してチェストにアイテムを移動
+                            if (currentIndex < chestSize) {
+                                chest.setItem(currentIndex, stack.copy());
+                                currentIndex++;
+                                player.getInventory().setItem(i, ItemStack.EMPTY);
+                            } else {
+                                // チェストに空きがない場合、アイテムをドロップ
+                                ItemEntity itemEntity = new ItemEntity(player.level, deathPos.getX(), deathPos.getY(), deathPos.getZ(), stack);
+                                player.level.addFreshEntity(itemEntity);
+                            }
                         }
                     }
                 }
@@ -135,28 +149,39 @@ public class IProcedure {
                 // プレイヤーの装備品をチェストに移動
                 for (ItemStack stack : player.getArmorSlots()) {
                     if (!stack.isEmpty()) {
-                        if (!stack.is(Items.BARRIER)&& !stack.is(IjijModItems.AXE.get())&&!stack.is(item.getItem())) {
-
-                            chest.setItem(chest.getContainerSize() - 1, stack.copy());
+                        if (!stack.is(Items.BARRIER) && !stack.is(IjijModItems.AXE.get()) && !stack.is(item.getItem())) {
+                            if (currentIndex < chestSize) {
+                                chest.setItem(currentIndex, stack.copy());
+                                currentIndex++;
+                            } else {
+                                ItemEntity itemEntity = new ItemEntity(player.level, deathPos.getX(), deathPos.getY(), deathPos.getZ(), stack);
+                                player.level.addFreshEntity(itemEntity);
+                            }
                         }
                     }
                 }
+
+                // プレイヤーの手に持っているアイテムをチェストに移動
                 for (ItemStack stack : player.getHandSlots()) {
                     if (!stack.isEmpty()) {
-                        if (!stack.is(Items.BARRIER)  && !stack.is(IjijModItems.AXE.get())&&!stack.is(item.getItem())) {
-
-                            chest.setItem(chest.getContainerSize() - 1, stack.copy());
+                        if (!stack.is(Items.BARRIER) && !stack.is(IjijModItems.AXE.get()) && !stack.is(item.getItem())) {
+                            if (currentIndex < chestSize) {
+                                chest.setItem(currentIndex, stack.copy());
+                                currentIndex++;
+                            } else {
+                                ItemEntity itemEntity = new ItemEntity(player.level, deathPos.getX(), deathPos.getY(), deathPos.getZ(), stack);
+                                player.level.addFreshEntity(itemEntity);
+                            }
                         }
                     }
                 }
             }
 
-            // チェストにアイテムが入りきらない場合、余ったアイテムをドロップ
+            // チェストに入りきらなかったアイテムをドロップ
             for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                 ItemStack stack = player.getInventory().getItem(i);
                 if (!stack.isEmpty()) {
-                    if (!stack.is(Items.BARRIER) && !stack.is(IjijModItems.AXE.get())&&!stack.is(item.getItem())) {
-
+                    if (!stack.is(Items.BARRIER) && !stack.is(IjijModItems.AXE.get()) && !stack.is(item.getItem())) {
                         ItemEntity itemEntity = new ItemEntity(player.level, deathPos.getX(), deathPos.getY(), deathPos.getZ(), stack);
                         player.level.addFreshEntity(itemEntity);
                         player.getInventory().setItem(i, ItemStack.EMPTY);
@@ -165,6 +190,7 @@ public class IProcedure {
             }
         }
     }
+
     @SubscribeEvent
     public static void onPlayerDeath(LivingDropsEvent event) {
         if (event.getEntity() instanceof Player) {
@@ -193,7 +219,7 @@ public class IProcedure {
     public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
         Player player = (Player) event.getEntity();
         protectInventory(player);
-        event.getPlayer().getAttribute(Attributes.MAX_HEALTH).setBaseValue(40);
+        event.getPlayer().getAttribute(Attributes.MAX_HEALTH).setBaseValue(60);
         event.getPlayer().heal((float) event.getPlayer().getAttribute(Attributes.MAX_HEALTH).getValue());
     }
 
@@ -247,6 +273,26 @@ public class IProcedure {
         if (itemStack.getItem() == Items.BARRIER) {
             // Prevent placing barrier blocks by cancelling the event
             event.setCanceled(true);
+        }
+    }
+    private static final String TEAM_NAME = "no_nametag";
+
+    @SubscribeEvent
+    public static void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
+        if (event.getEntity() instanceof ServerPlayer) {
+            ServerPlayer player = (ServerPlayer) event.getEntity();
+            Scoreboard scoreboard = player.getLevel().getScoreboard();
+
+            // 既存のチームが存在しなければ作成
+            PlayerTeam team = scoreboard.getPlayerTeam(TEAM_NAME);
+            if (team == null) {
+                team = scoreboard.addPlayerTeam(TEAM_NAME);
+                // ネームタグの表示設定を非表示に設定
+                team.setNameTagVisibility(Team.Visibility.NEVER);
+            }
+
+            // プレイヤーをこのチームに追加
+            scoreboard.addPlayerToTeam(player.getScoreboardName(), team);
         }
     }
 }
